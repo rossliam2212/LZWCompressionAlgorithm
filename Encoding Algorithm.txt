@@ -1,0 +1,24 @@
+Encoding algorithm
+
+The algorithm is thus:
+
+• At the start the dictionary contains all possible roots and P is
+  empty.
+
+• Let C be the next character in the stream
+
+• Is the new string P+C present in the dictionary?
+
+  a) If yes, P = P+C (extend the string P with C)
+
+  b) If no, then
+
+     i) Output the code word which represents P to the codestream.
+    ii) Add the string P+C to the dictionary
+   iii) Set P=C (P contains only C now)
+
+• Check if there are more characters in the stream.
+
+  a) If yes, go back to the second step.
+  b) If no, then output the code representing P to the codestream and
+     end.
