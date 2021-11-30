@@ -30,13 +30,13 @@ AAAAAAAABBBBACCAAAAAAAABDDDBBCAAAAAAAABDDDBBDBAAAAAAABDBBBCCDBBAAAACBDDBBCCBDDCA
 
 Where:
 ```
-White       -> A
-Grey        -> B
-Dark Grey   -> C
-Light Grey  -> D
-Orange      -> E
-Yellow      -> F
-Red         -> G
+White       -> A -> (1)
+Grey        -> B -> (2)
+Dark Grey   -> C -> (3)
+Light Grey  -> D -> (4)
+Orange      -> E -> (5)
+Yellow      -> F -> (6)
+Red         -> G -> (7)
 ```
 
 ### Output:
