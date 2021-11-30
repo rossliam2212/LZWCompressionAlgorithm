@@ -1,6 +1,6 @@
 # LZW Compression Algorithm
 
-Simple LZW Compression Encoding program written using Java based on this [Algorithm](https://github.com/rossliam2212/LZWCompressionAlgorithm/blob/master/Encoding%20Algorithm.txt).
+Simple LZW Compression Encoding program written using Java based on the [Algorithm](https://github.com/rossliam2212/LZWCompressionAlgorithm/blob/master/Encoding%20Algorithm.txt) below.
 
 ## Encoding Algorithm
 - At the start, the dictionary contains all possible roots and P is empty.
