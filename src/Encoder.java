@@ -23,7 +23,6 @@ public class Encoder {
         printRootDictionary(this.rootDictionary);
 
         int codestreamLength = getCodestream(this.charstream, this.rootDictionary);
-        printExtendedDictionary(this.extendedDictionary, this.rootDictionary);
 
         printCodestream(this.codestream);
 
@@ -40,15 +39,23 @@ public class Encoder {
     private void calculateEfficiency(double codestreamLength, ArrayList<String> rootDictionary, double charstreamLength) {
         double efficiency = 1 - ((codestreamLength + rootDictionary.size() + 1) / charstreamLength);
         int efficiencyPercentage = (int)Math.ceil(efficiency * 100);
-        System.out.println("\nEfficiency: " + efficiency + " ≃ " + efficiencyPercentage + "%");
+        System.out.println("\nEfficiency: \n" + efficiency + " ≃ " + efficiencyPercentage + "% reduction.");
     }
 
     /**
      * This method uses the LZW encoding algorithm to encode the inputted charstream and calculate the codestream.
+     * This method also prints out the encoding table.
+     * NOTE: THE VERY LAST ENTRY IN THE ENCODING TABLE IS WRONG & HAS TO BE FIXED.
      * @param charstream The inputted charstream.
      * @param rootDictionary The root dictionary.
+     * @return The length of the codestream.
      */
     private int getCodestream(String charstream, ArrayList<String> rootDictionary) {
+        System.out.println("\nEncoding Table:");
+        System.out.println("------------------------------------------------");
+        System.out.printf("| %-5s | %-10s | %-5s | %-15s | \n", "n", "P", "C", "Ext. Dictionary");
+        System.out.println("------------------------------------------------");
+
         int codestreamLengthCounter = 0;
         String P = "";
         int beginIndex = 0;
@@ -91,7 +98,19 @@ public class Encoder {
                 C = charstream.substring(beginIndex, endIndex);
                 PandC = P + C;
             }
+
+            // Printing the Encoding Table
+//            if (dictionaryCheck(PandC, rootDictionary)) {
+//                System.out.printf("| %-5s | %-10s | %-5s | %-15s %1s | \n", codestreamLengthCounter, P, C, PandC, getDictionaryIndex(PandC, rootDictionary));
+//            } else if (dictionaryCheck(PandC, extendedDictionary)) {
+//                System.out.printf("| %-5s | %-10s | %-5s | %-15s %1s | \n", codestreamLengthCounter, P, C, PandC, getDictionaryIndex(PandC, extendedDictionary));
+//            }
+            System.out.printf("| %-5s | %-10s | %-5s | %-15s | \n", codestreamLengthCounter+2, P, C, PandC);
+//            System.out.printf("| %-5s | %-10s | %-5s | %-15s | \n", codestreamLengthCounter, P, C, dictionaryCheck(PandC, extendedDictionary) ? PandC : "-");
+
         }
+        System.out.println("------------------------------------------------");
+        printExtendedDictionary(this.extendedDictionary, this.rootDictionary);
         return codestreamLengthCounter;
     }
 
@@ -114,7 +133,6 @@ public class Encoder {
                 rootDictionary.add(Character.toString(arr[i]));
             }
         }
-//        printRootDictionary(rootDictionary);
         return rootDictionary;
     }
 
@@ -140,7 +158,7 @@ public class Encoder {
      * This method takes in a code and a dictionary and checks whether that code is in the dictionary or not.
      * @param code The code to be checked.
      * @param dictionary The dictionary to check if the code is in.
-     * @return True if the value is found, false otherwise.
+     * @return True if the code is found, false otherwise.
      */
     private boolean dictionaryCheck(String code, ArrayList<String> dictionary) {
         for (String s : dictionary) {
@@ -190,7 +208,7 @@ public class Encoder {
      * @param rootDictionary The root dictionary.
      */
     private void printRootDictionary(ArrayList<String> rootDictionary) {
-        System.out.println("Root Dictionary: \n-----------"); // Printing out the root directory
+        System.out.println("Root Dictionary: \n-----------"); // Printing out the root directory.
         for (int i = 0; i < rootDictionary.size(); i++) {
             System.out.println("| " + rootDictionary.get(i) + " | (" + (i + 1) + ") |");
         }
@@ -203,10 +221,11 @@ public class Encoder {
      * @param rootDictionary The root dictionary.
      */
     private void printExtendedDictionary(ArrayList<String> extendedDictionary, ArrayList<String> rootDictionary) {
-        System.out.println("Extended Dictionary: \n-----------"); // Printing out the root directory
+        System.out.println("\nFull Extended Dictionary: \n----------------------"); // Printing out the extended directory.
         for (int i = 0; i < extendedDictionary.size(); i++) {
-            System.out.println("| " + extendedDictionary.get(i) + " | (" + (rootDictionary.size() + i + 1) + ") |");
+//            System.out.println("| " + extendedDictionary.get(i) + " | (" + (rootDictionary.size() + i + 1) + ") |");
+            System.out.printf("| %-10s | ( %-1s ) | \n", extendedDictionary.get(i), (rootDictionary.size() + i + 1));
         }
-        System.out.println("-----------");
+        System.out.println("-----------------------");
     }
 }
