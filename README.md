@@ -22,7 +22,7 @@ Simple LZW Compression Encoding program written using Java based on the [Algorit
 
 Note - There are two errors:
 - The last entry in the encoding table will always be incorrect. 
-- The codestream will will always be short one code.
+- The codestream will always be short one code.
 
 ### Input:
 
