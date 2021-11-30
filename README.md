@@ -2,9 +2,25 @@
 
 Simple LZW Compression Encoding program written using Java based on this [Algorithm](https://github.com/rossliam2212/LZWCompressionAlgorithm/blob/master/Encoding%20Algorithm.txt).
 
+## Encoding Algorithm
+- At the start, the dictionary contains all possible roots and P is empty.
 
-### Sample Input:
+- Let C be the next character in the charstream.
 
+- Is the new string P+C present in the dictionary?
+  - If yes, P = P+C (extend the string P with C
+  - If no, then:
+    - Output the code word which represnts P to the codestream
+    - Add the string P+C to the dictionary
+    - Set P = C (P only contains C now)
+   
+- Check if there ate more characters in the stream.
+  - If yes, go back to the second step.
+  - If no, then output the code representing P to the codestrema and end.
+
+## Encoding Example:
+
+#### Input:
 
 ![image](https://user-images.githubusercontent.com/73957889/144081434-fd6e697e-1a04-430c-9b09-fa48afa84bdb.png)
 
@@ -13,7 +29,7 @@ Charstream for 16x16 image above:
 AAAAAAAABBBBACCAAAAAAAABDDDBBCAAAAAAAABDDDBBDBAAAAAAABDBBBCCDBBAAAACBDDBBCCBDDCAAABDDDBBDBBDDBCAABDDBBBBBEEEBBCACDBBBBBBBEFEBCAACDBBBBBBEFCFEAAACDBBBBBBEFCFEAAACBBBBBBEFFCFFEAACGGBBBEFFFFFFFEACGGGBBEFFFCFFFEAACGGCEFFFFFFFFFEAACCCEEEEEEEEEEEAAAAAAAAAAAAAAAA
 
 
-Output:
+### Output:
 ```
 Root Dictionary:
 -----------
