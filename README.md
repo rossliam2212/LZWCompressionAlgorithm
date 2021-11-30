@@ -20,6 +20,10 @@ Simple LZW Compression Encoding program written using Java based on the [Algorit
 
 ## Encoding Example:
 
+Note - There are two errors:
+- The last entry in the encoding table is incorrect. 
+- The codestream will will always be short one code.
+
 ### Input:
 
 ![image](https://user-images.githubusercontent.com/73957889/144081434-fd6e697e-1a04-430c-9b09-fa48afa84bdb.png)
