@@ -20,14 +20,24 @@ Simple LZW Compression Encoding program written using Java based on this [Algori
 
 ## Encoding Example:
 
-#### Input:
+### Input:
 
 ![image](https://user-images.githubusercontent.com/73957889/144081434-fd6e697e-1a04-430c-9b09-fa48afa84bdb.png)
 
-Charstream for 16x16 image above: 
+#### Charstream for 16x16 image above: 
 
 AAAAAAAABBBBACCAAAAAAAABDDDBBCAAAAAAAABDDDBBDBAAAAAAABDBBBCCDBBAAAACBDDBBCCBDDCAAABDDDBBDBBDDBCAABDDBBBBBEEEBBCACDBBBBBBBEFEBCAACDBBBBBBEFCFEAAACDBBBBBBEFCFEAAACBBBBBBEFFCFFEAACGGBBBEFFFFFFFEACGGGBBEFFFCFFFEAACGGCEFFFFFFFFFEAACCCEEEEEEEEEEEAAAAAAAAAAAAAAAA
 
+Where:
+```
+White       -> A
+Grey        -> B
+Dark Grey   -> C
+Light Grey  -> D
+Orange      -> E
+Yellow      -> F
+Red         -> G
+```
 
 ### Output:
 ```
