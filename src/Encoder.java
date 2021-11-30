@@ -23,6 +23,7 @@ public class Encoder {
         printRootDictionary(this.rootDictionary);
 
         int codestreamLength = getCodestream(this.charstream, this.rootDictionary);
+        printExtendedDictionary(this.extendedDictionary, this.rootDictionary);
 
         printCodestream(this.codestream);
 
@@ -100,17 +101,11 @@ public class Encoder {
             }
 
             // Printing the Encoding Table
-//            if (dictionaryCheck(PandC, rootDictionary)) {
-//                System.out.printf("| %-5s | %-10s | %-5s | %-15s %1s | \n", codestreamLengthCounter, P, C, PandC, getDictionaryIndex(PandC, rootDictionary));
-//            } else if (dictionaryCheck(PandC, extendedDictionary)) {
-//                System.out.printf("| %-5s | %-10s | %-5s | %-15s %1s | \n", codestreamLengthCounter, P, C, PandC, getDictionaryIndex(PandC, extendedDictionary));
-//            }
             System.out.printf("| %-5s | %-10s | %-5s | %-15s | \n", codestreamLengthCounter+2, P, C, PandC);
-//            System.out.printf("| %-5s | %-10s | %-5s | %-15s | \n", codestreamLengthCounter, P, C, dictionaryCheck(PandC, extendedDictionary) ? PandC : "-");
 
         }
         System.out.println("------------------------------------------------");
-        printExtendedDictionary(this.extendedDictionary, this.rootDictionary);
+//        printExtendedDictionary(this.extendedDictionary, this.rootDictionary);
         return codestreamLengthCounter;
     }
 
