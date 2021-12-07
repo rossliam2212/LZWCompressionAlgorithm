@@ -52,10 +52,7 @@ public class Encoder {
      * @return The length of the codestream.
      */
     private int getCodestream(String charstream, ArrayList<String> rootDictionary) {
-        System.out.println("\nEncoding Table:");
-        System.out.println("------------------------------------------------");
-        System.out.printf("| %-5s | %-10s | %-5s | %-15s | \n", "n", "P", "C", "Ext. Dictionary");
-        System.out.println("------------------------------------------------");
+        printStartOfEncodingTable();
 
         int codestreamLengthCounter = 0;
         String P = "";
@@ -100,12 +97,12 @@ public class Encoder {
                 PandC = P + C;
             }
 
-            // Printing the Encoding Table
+            // Printing the Encoding Table.
             System.out.printf("| %-5s | %-10s | %-5s | %-15s | \n", codestreamLengthCounter+2, P, C, PandC);
 
         }
+        // Bottom of the encoding table.
         System.out.println("------------------------------------------------");
-//        printExtendedDictionary(this.extendedDictionary, this.rootDictionary);
         return codestreamLengthCounter;
     }
 
@@ -165,20 +162,21 @@ public class Encoder {
     }
 
     /**
+     * This method prints the start of the encoding table with all the heading.
+     */
+    private void printStartOfEncodingTable() {
+        System.out.println("\nEncoding Table:");
+        System.out.println("------------------------------------------------");
+        System.out.printf("| %-5s | %-10s | %-5s | %-15s | \n", "n", "P", "C", "Ext. Dictionary");
+        System.out.println("------------------------------------------------");
+    }
+
+    /**
      * This method prints out the charstream.
      * @param charstream The charstream.
      */
     private void printCharstream(String charstream) {
-        int counter = 0;
-        System.out.println("Charstream: ");
-        for (int i = 0; i < charstream.length(); i++) {
-            counter++;
-            System.out.print(charstream.charAt(i));
-            if (counter % 100 == 0) {
-                System.out.println();
-            }
-        }
-        System.out.println("\n");
+        System.out.println("Charstream: \n" + charstream);
     }
 
     /**
@@ -186,16 +184,7 @@ public class Encoder {
      * @param codestream The codestream.
      */
     private void printCodestream(String codestream) {
-        int counter = 0;
-        System.out.println("\nCodestream: ");
-        for (int i = 0; i < codestream.length(); i++) {
-            counter++;
-            System.out.print(codestream.charAt(i));
-            if (counter % 100 == 0) {
-                System.out.println();
-            }
-        }
-        System.out.println();
+        System.out.println("\nCodestream: \n" + codestream);
     }
 
     /**
